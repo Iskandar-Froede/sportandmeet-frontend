@@ -3,7 +3,7 @@ import { useState } from "react";
 const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -13,15 +13,15 @@ const SignupPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ username, email, password }),
     });
     const parsed = await response.json();
     console.log(parsed);
   };
 
   function handleChange(event) {
-    if (event.target.name === "name") {
-      setName(event.target.value);
+    if (event.target.name === "username") {
+      setUsername(event.target.value);
     } else if (event.target.name === "email") {
       setEmail(event.target.value);
     } else {
@@ -32,9 +32,16 @@ const SignupPage = () => {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        <input type="text" name="name" value={name} onChange={handleChange} />
+        Username
+        <input
+          type="text"
+          name="username"
+          value={username}
+          onChange={handleChange}
+        />
       </label>
       <label>
+        Email
         <input
           type="email"
           name="email"
@@ -43,6 +50,7 @@ const SignupPage = () => {
         />
       </label>
       <label>
+        Password
         <input
           type="password"
           name="password"
@@ -50,7 +58,7 @@ const SignupPage = () => {
           onChange={handleChange}
         />
       </label>
-      <button>SUBMIT</button>
+      <button>REGISTER</button>
     </form>
   );
 };

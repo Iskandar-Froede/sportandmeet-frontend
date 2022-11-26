@@ -14,10 +14,10 @@ function Events() {
   }, []);
 
   const deleteEvent = async (eventId) => {
-    await fetch(`http://localhost:5005/api/events/${eventId}`, {
+    await fetch(`http://localhost:5005/events/${eventId}`, {
       method: "DELETE",
     });
-    fetchBeers();
+    fetchEvents();
   };
 
   return (

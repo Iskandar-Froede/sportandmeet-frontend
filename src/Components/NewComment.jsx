@@ -1,7 +1,7 @@
 import React from "react";
 
-function AddEvent() {
-  return <div>AddEvent</div>;
+function NewComment() {
+  return <div>NewComment</div>;
 }
 
-export default AddEvent;
+export default NewComment;
