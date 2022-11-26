@@ -18,21 +18,25 @@ function Login({ onSubmit }) {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Email</label>
-      <input
-        id="email"
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <label htmlFor="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">submit</button>
+      <label>
+        Email
+        <input
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Password
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={handleChange}
+        />
+      </label>
+      <button>LOGIN</button>
     </form>
   );
 }
