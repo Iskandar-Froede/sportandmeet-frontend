@@ -24,7 +24,7 @@ function Events() {
     <div>
       <h1>My Evenst</h1>
       {token}
-      <NewComment fetchEvents={fetchEvents} />
+      <NewEvent fetchEvents={fetchEvents} />
 
       {events.map((event) => (
         <Event
