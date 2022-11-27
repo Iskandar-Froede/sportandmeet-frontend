@@ -1,74 +1,84 @@
-import React from "react";
+import React, { useState } from "react";
 
-function NewEvent({ handleNewEvent }) {
-  const [newEvent, setNewEvent] = useState({
-    name: "",
-    sport: "",
-    date: "",
-    time: "",
-    location: "",
-    participants: 0,
-  });
+function NewEvent({ fetchEvents }) {
+  const [name, setName] = useState("");
+  const [sport, setSport] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [location, setLocation] = useState("");
+  const [participants, setParticipants] = useState(0);
 
-  function handleChange(e) {
-    const value = e.target.value;
-    const name = e.target.name;
-    setNewEvent({
-      ...newEvent,
-      [name]: value,
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const response = await fetch("http://localhost:5005/events", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, sport, date, time, location, participants }),
     });
-  }
+    setName("");
+    setSport("");
+    setDate("");
+    setTime("");
+    setLocation("");
+    setParticipants(0);
+    fetchEvents();
+  };
 
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          handleNewEvent(e, newEvent);
-        }}
-      >
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={newEvent.name}
-          onChange={handleChange}
-        />
-        <label>Sport:</label>
-        <input
-          type="checkbox"
-          name="sport"
-          value={newEvent.sport}
-          onChange={handleChange}
-        />
-        <label>Date:</label>
-        <input
-          type="date"
-          name="date"
-          value={newEvent.date}
-          onChange={handleChange}
-        />
-        <label>Time:</label>
-        <input
-          type="time"
-          name="time"
-          value={newEvent.time}
-          onChange={handleChange}
-        />
-        <label>Location:</label>
-        <input
-          type="text"
-          name="location"
-          value={newEvent.location}
-          onChange={handleChange}
-        />
-        <label>Participants:</label>
-        <input
-          type="number"
-          name="participants"
-          value={newEvent.participants}
-          onChange={handleChange}
-        />
-        <button>Submit</button>
+      <h2>Add a new event</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name :
+          <input
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+        </label>
+        <label>
+          Sport :
+          <input
+            value={sport}
+            onChange={(event) => setSport(event.target.value)}
+          />
+        </label>
+        <label>
+          Date :
+          <input
+            value={date}
+            type="date"
+            onChange={(event) => setDate(event.target.value)}
+          />
+        </label>
+        <label>
+          Time :
+          <input
+            value={time}
+            type="time"
+            onChange={(event) => setTime(event.target.value)}
+          />
+        </label>
+        <label>
+          Location :
+          <input
+            value={location}
+            type="time"
+            onChange={(event) => setLocation(event.target.value)}
+          />
+        </label>
+        <label>
+          Number of Participants :
+          <input
+            value={participants}
+            type="number"
+            onChange={(event) => setParticipants(event.target.value)}
+          />
+        </label>
+
+        <button>Add Event</button>
       </form>
     </div>
   );

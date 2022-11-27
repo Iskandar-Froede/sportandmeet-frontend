@@ -30,36 +30,36 @@ const SignupPage = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username
+    <div className="auth-form-container">
+      <h2>SIGNUP</h2>
+      <form className="signup-form" onSubmit={handleSubmit}>
+        <label for="username">username </label>
         <input
           type="text"
           name="username"
           value={username}
           onChange={handleChange}
         />
-      </label>
-      <label>
-        Email
+
+        <label>email</label>
         <input
           type="email"
           name="email"
           value={email}
           onChange={handleChange}
         />
-      </label>
-      <label>
-        Password
+
+        <label for="password">password</label>
         <input
           type="password"
           name="password"
           value={password}
           onChange={handleChange}
         />
-      </label>
-      <button>REGISTER</button>
-    </form>
+
+        <button>REGISTER</button>
+      </form>
+    </div>
   );
 };
 

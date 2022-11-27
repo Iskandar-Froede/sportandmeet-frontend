@@ -23,7 +23,7 @@ const NewComment = ({ fetchComments }) => {
   };
 
   return (
-    <>
+    <div>
       <h2>Add a new comment</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -52,7 +52,7 @@ const NewComment = ({ fetchComments }) => {
         </label>
         <button type="submit">Add Comment</button>
       </form>
-    </>
+    </div>
   );
 };
 

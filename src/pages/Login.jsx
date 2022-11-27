@@ -1,4 +1,9 @@
 import { useState } from "react";
+import 
+
+
+
+
 function Login({ onSubmit }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,28 +21,31 @@ function Login({ onSubmit }) {
     const parsed = await response.json();
     console.log(parsed);
   };
+
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-        />
-      </label>
-      <button>LOGIN</button>
-    </form>
+    <div className="auth-form-container">
+      <h2>LOGIN</h2>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <label for="email">email</label>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleSubmit}
+          />
+        
+        <label for="password">password</label>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleSubmit}
+          />
+        
+        <button>LOGIN</button>
+      </form>
+    </div>
   );
 }
 export default Login;
