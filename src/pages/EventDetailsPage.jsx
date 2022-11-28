@@ -10,12 +10,14 @@ function EventDetailsPage(props) {
   const [event, setEvent] = useState(null);
 
   const { Id } = useParams();
+  console.log(Id);
 
   const getEvent = () => {
     axios
-      .get(`${API_URL}/events/${Id}`)
+      .get(`${API_URL}/events/singleEvent/${Id}`)
       .then((response) => {
         const oneEvent = response.data;
+        console.log(oneEvent);
         setEvent(oneEvent);
       })
       .catch((error) => console.log(error));
@@ -43,7 +45,7 @@ function EventDetailsPage(props) {
       <NewComment refreshEvent={getEvent} eventId={Id} />
 
       {event &&
-        event.tasks.map((comment) => (
+        event.comments.map((comment) => (
           <li key={comment._id}>
             <h3>{comment.title}</h3>
             <h4>Description:</h4>

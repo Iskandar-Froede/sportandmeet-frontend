@@ -75,8 +75,8 @@ function EventsPages() {
 
   return (
     <div>
-     <NewEvent refreshEvents={getAllEvents} />
-      {events && events.map((event) => (
+      <NewEvent refreshEvents={getAllEvents} />
+      {events.map((event) => (
         <EventCard key={event._id} {...event} />
       ))}
     </div>

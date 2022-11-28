@@ -8,26 +8,25 @@ function NewComment(props) {
   const [description, setDescription] = useState("");
   const [created, setCreated] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
   const { id } = props;
   const requestBody = { title, description, id };
 
-  axios
-    .post(`${API_URL}/events`, requestBody)
-    .then((response) => {
-      // Reset the state to clear the inputs
-      setTitle("");
-      setDescription("");
-      setCreated("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post(`${API_URL}/events`, requestBody)
+      .then((response) => {
+        // Reset the state to clear the inputs
+        setTitle("");
+        setDescription("");
+        setCreated("");
 
-      // Invoke the callback function coming through the props
-      // from the ProjectDetailsPage, to refresh the project details
-      props.refreshProject();
-    })
-    .catch((error) => console.log(error));
+        // Invoke the callback function coming through the props
+        // from the ProjectDetailsPage, to refresh the project details
+        props.refreshProject();
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div>
@@ -49,14 +48,7 @@ function NewComment(props) {
             type="text"
           />
         </label>
-        <label>
-          Created :
-          <input
-            value={created}
-            onChange={(event) => setCreated(event.target.value)}
-            type="date"
-          />
-        </label>
+
         <button type="submit">Add Comment</button>
       </form>
     </div>
