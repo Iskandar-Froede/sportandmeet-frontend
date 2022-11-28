@@ -13,12 +13,12 @@ function EditEventPage(props) {
   const [location, setLocation] = useState("");
   const [participants, setParticipants] = useState(0);
 
-  const { id } = useParams();
+  const { Id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/events/${id}`)
+      .get(`${API_URL}/events/${Id}`)
       .then((response) => {
         const oneEvent = response.data;
         setName(oneEvent.name);
@@ -29,23 +29,23 @@ function EditEventPage(props) {
         setParticipants(0);
       })
       .catch((error) => console.log(error));
-  }, [id]);
+  }, [Id]);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
     const requestBody = { name, sport, date, time, location, participants };
 
-    axios.put(`${API_URL}/eventss/${id}`, requestBody).then((response) => {
+    axios.put(`${API_URL}/eventss/${Id}`, requestBody).then((response) => {
       // Once the request is resolved successfully and the project
       // is updated we navigate back to the details page
-      navigate(`/events/${id}`);
+      navigate(`/events/${Id}`);
     });
   };
 
   const deleteEvent = () => {
     axios
-      .delete(`${API_URL}/events/${id}`)
+      .delete(`${API_URL}/events/${Id}`)
       .then(() => {
         // Once the delete request is resolved successfully
         // navigate back to the list of projects.

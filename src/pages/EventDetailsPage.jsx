@@ -9,11 +9,11 @@ const API_URL = "http://localhost:5005";
 function EventDetailsPage(props) {
   const [event, setEvent] = useState(null);
 
-  const { id } = useParams();
+  const { Id } = useParams();
 
   const getEvent = () => {
     axios
-      .get(`${API_URL}/events/${id}`)
+      .get(`${API_URL}/events/${Id}`)
       .then((response) => {
         const oneEvent = response.data;
         setEvent(oneEvent);
@@ -40,7 +40,7 @@ function EventDetailsPage(props) {
         </>
       )}
 
-      <NewComment refreshEvent={getEvent} eventId={id} />
+      <NewComment refreshEvent={getEvent} eventId={Id} />
 
       {event &&
         event.tasks.map((comment) => (
@@ -56,7 +56,7 @@ function EventDetailsPage(props) {
         <button>Back to events</button>
       </Link>
 
-      <Link to={`/events/edit/${id}`}>
+      <Link to={`/events/edit/${Id}`}>
         <button>Edit Event</button>
       </Link>
     </div>
