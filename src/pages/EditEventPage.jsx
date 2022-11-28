@@ -94,7 +94,7 @@ function EditEventPage(props) {
           Location :
           <input
             value={location}
-            type="time"
+            type="text"
             onChange={(event) => setLocation(event.target.value)}
           />
         </label>
