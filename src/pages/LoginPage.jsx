@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { SessionContext } from "../contexts/Session.Context";
 
 const LoginPage = () => {
-  //  const { setToken } = useContext(SessionContext);
+  const { setToken } = useContext(SessionContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,13 +19,12 @@ const LoginPage = () => {
       body: JSON.stringify({ email, password }),
     });
     const parsed = await response.json();
-    /*
+
     if (parsed.status === 200) {
       setToken(parsed.token);
     } else {
       setError(parsed);
     }
-*/
   };
 
   return (
@@ -48,7 +47,7 @@ const LoginPage = () => {
           type="password"
           name="password"
           value={password}
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(event) => setPassword(event.target.value)}
           required
         />
 

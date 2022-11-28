@@ -9,7 +9,7 @@ function EventDetailsPage(props) {
 
   const { Id } = useParams();
 
-  const getProject = () => {
+  const getEvent = () => {
     axios
       .get(`${API_URL}/events/${Id}`)
       .then((response) => {
@@ -39,7 +39,7 @@ function EventDetailsPage(props) {
       )}
 
       {event &&
-        event.tasks.map((task) => (
+        event.tasks.map((comment) => (
           <li key={comment._id}>
             <h3>{comment.title}</h3>
             <h4>Description:</h4>
