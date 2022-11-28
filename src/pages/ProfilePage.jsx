@@ -20,9 +20,10 @@ function ProfilePage() {
     return <p>...is Loading</p>;
   }
 
+  console.log (user)
   return (
     <div>
-      <h1> Welcome {user.username} </h1>
+      <h1> Welcome {user.name} </h1>
     </div>
   );
 }

@@ -60,11 +60,14 @@ function EventsPages() {
   const [events, setEvents] = useState([]);
 
   const getAllEvents = () => {
-    axios
+     axios
       .get(`${API_URL}/events`)
-      .then((response) => setEvents(response.data))
+      .then((response) => {
+        console.log (response.data)
+        setEvents (response.data.events)})
       .catch((error) => console.log(error));
   };
+  
 
   useEffect(() => {
     getAllEvents();
@@ -72,8 +75,8 @@ function EventsPages() {
 
   return (
     <div>
-      <NewEvent refreshEvents={getAllEvents} />
-      {events.map((event) => (
+     <NewEvent refreshEvents={getAllEvents} />
+      {events && events.map((event) => (
         <EventCard key={event._id} {...event} />
       ))}
     </div>
