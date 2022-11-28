@@ -45,7 +45,7 @@ function EventDetailsPage(props) {
       <NewComment refreshEvent={getEvent} eventId={Id} />
 
       {event &&
-        event.comments.map((comment) => (
+        event.comment.map((comment) => (
           <li key={comment._id}>
             <h3>{comment.title}</h3>
             <h4>Description:</h4>
