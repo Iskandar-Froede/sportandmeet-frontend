@@ -1,34 +1,33 @@
 import { useContext } from "react";
-import { Routes, Route } from "react-router-dom";
+import { SessionContext } from "./contexts/Session.Context";
 import { NavLink, Route, Routes } from "react-router-dom";
-import PrivateRoute from "./components/PrivateRoute";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import SignupPage from "./pages/Signup";
-import EventsPage from "./pages/Events";
+import HomePage from "./pages/HomePage";
+import SignupPage from "./pages/SignupPage";
+import EventsPage from "./pages/EventsPages";
+import LoginPage from "./pages/LoginPage";
+import Navbar from "./Components/Navbar";
+import EventDetailsPage from "./pages/EventDetailsPage";
 
 function App() {
-  const { isAuthenticated } = useContext(SessionContext);
+  //  const { isAuthenticated } = useContext(SessionContext);
+  //  console.log(isAuthenticated);
 
   return (
     <div className="App">
-      {isAuthenticated ? (
-        <NavLink to="/beers">Beers</NavLink>
+      {/*      {isAuthenticated ? (
+        <NavLink to="/events">Events</NavLink>
       ) : (
         <NavLink to="/login">Login</NavLink>
       )}
+*/}
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/events"
-          element={
-            <PrivateRoute>
-              <EventsPage />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/events/:Id" element={<EventDetailsPage />} />
+        <Route path="/events/edit/:Id" element={<EditProjectPage />} />
       </Routes>
     </div>
   );

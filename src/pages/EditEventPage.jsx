@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
-function NewEvent(props) {
+function EditEventPage(props) {
   const [name, setName] = useState("");
   const [sport, setSport] = useState("");
   const [date, setDate] = useState("");
@@ -11,30 +13,27 @@ function NewEvent(props) {
   const [location, setLocation] = useState("");
   const [participants, setParticipants] = useState(0);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const { Id } = useParams();
 
-    const requestBody = { name, sport, date, time, location, participants };
+  useEffect(() => {
     axios
-      .post(`${API_URL}/events`, requestBody)
+      .get(`${API_URL}/events/${Id}`)
       .then((response) => {
-        // Reset the state
-        setName("");
-        setSport("");
-        setDate("");
-        setTime("");
-        setLocation("");
+        const oneEvent = response.data;
+        setName(oneEvent.name);
+        setSport(oneEvent.sport);
+        setDate(oneEvent.date);
+        setTime(oneEvent.time);
+        setLocation(oneEvent.location);
         setParticipants(0);
-
-        props.refreshEvents();
       })
       .catch((error) => console.log(error));
-  };
+  }, [Id]);
 
   return (
     <div>
-      <h2>Add a new event</h2>
-      <form onSubmit={handleSubmit}>
+      <h1>Edit Event</h1>
+      <form>
         <label>
           Name :
           <input
@@ -84,9 +83,10 @@ function NewEvent(props) {
           />
         </label>
 
-        <button type="submit">Add Event</button>
+        <input type="submit" value="Submit" />
       </form>
     </div>
   );
 }
-export default NewEvent;
+
+export default EditEventPage;

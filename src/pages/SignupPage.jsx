@@ -33,7 +33,7 @@ const SignupPage = () => {
     <div className="auth-form-container">
       <h2>SIGNUP</h2>
       <form className="signup-form" onSubmit={handleSubmit}>
-        <label for="username">username </label>
+        <label htmlFor="username">username </label>
         <input
           type="text"
           name="username"
@@ -41,7 +41,7 @@ const SignupPage = () => {
           onChange={handleChange}
         />
 
-        <label>email</label>
+        <label htmlFor="email">email</label>
         <input
           type="email"
           name="email"
@@ -49,7 +49,7 @@ const SignupPage = () => {
           onChange={handleChange}
         />
 
-        <label for="password">password</label>
+        <label htmlFor="password">password</label>
         <input
           type="password"
           name="password"

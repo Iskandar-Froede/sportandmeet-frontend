@@ -3,11 +3,12 @@ import { createContext, useEffect, useState } from "react";
 export const SessionContext = createContext();
 
 const SessionContextProvider = ({ children }) => {
-  //const [token, setToken] = useState()
-  const [token, setToken] = useLocalStorage({
-    key: "token",
-    defaultValue: undefined,
-  });
+  const [token, setToken] = useState(0);
+  //  const [token, setToken] = useLocalStorage({
+  //    key: "token",
+  //    defaultValue: undefined,
+  //  });
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const verifyToken = async () => {
@@ -20,6 +21,7 @@ const SessionContextProvider = ({ children }) => {
     console.log(parsed.payload);
     if (parsed.message === "Token OK") {
       setIsAuthenticated(true);
+      setToken(parsed.payload);
     }
   };
 

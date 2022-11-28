@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { SessionContext } from "../contexts/SessionContext";
+import { SessionContext } from "../contexts/Session.Context";
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useContext(SessionContext);
