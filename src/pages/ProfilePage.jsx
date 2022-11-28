@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import axios from "axios";
+import { SessionContext } from "../contexts/Session.Context";
 
-function Profile(props) {
+function ProfilePage() {
+  const { user } = useContext(SessionContext);
+
   useEffect(() => {
     const verifyUser = async () => {
       const storedToken = localStorage.getItem("authToken");
@@ -12,11 +15,16 @@ function Profile(props) {
     };
     verifyUser();
   }, []);
+
+  if (!user) {
+    return <p>...is Loading</p>;
+  }
+
   return (
     <div>
-      <h1> Welcome{props.username} </h1>
+      <h1> Welcome {user.username} </h1>
     </div>
   );
 }
 
-export default Profile;
+export default ProfilePage;

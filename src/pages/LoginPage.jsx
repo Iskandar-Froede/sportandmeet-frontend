@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { SessionContext } from "../contexts/Session.Context";
 
 const LoginPage = () => {
@@ -7,6 +8,8 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -22,6 +25,10 @@ const LoginPage = () => {
 
     if (parsed.status === 200) {
       setToken(parsed.token);
+
+      localStorage.setItem("authToken", parsed.token);
+
+      navigate("/profile");
     } else {
       setError(parsed);
     }

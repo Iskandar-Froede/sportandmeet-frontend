@@ -2,16 +2,18 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import NewComment from "../Components/NewComment";
+
 const API_URL = "http://localhost:5005";
 
 function EventDetailsPage(props) {
   const [event, setEvent] = useState(null);
 
-  const { Id } = useParams();
+  const { id } = useParams();
 
   const getEvent = () => {
     axios
-      .get(`${API_URL}/events/${Id}`)
+      .get(`${API_URL}/events/${id}`)
       .then((response) => {
         const oneEvent = response.data;
         setEvent(oneEvent);
@@ -38,6 +40,8 @@ function EventDetailsPage(props) {
         </>
       )}
 
+      <NewComment refreshEvent={getEvent} eventId={id} />
+
       {event &&
         event.tasks.map((comment) => (
           <li key={comment._id}>
@@ -52,7 +56,7 @@ function EventDetailsPage(props) {
         <button>Back to events</button>
       </Link>
 
-      <Link to={`/events/edit/${Id}`}>
+      <Link to={`/events/edit/${id}`}>
         <button>Edit Event</button>
       </Link>
     </div>

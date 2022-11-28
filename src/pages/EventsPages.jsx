@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import EventCard from "../Components/EventCard";
+import NewEvent from "../Components/NewEvent";
+
 const API_URL = "http://localhost:5005";
 
 // import { SessionContext } from "../contexts/Session.Context";
@@ -69,15 +72,10 @@ function EventsPages() {
 
   return (
     <div>
-      {events.map((event) => {
-        return (
-          <div key={event._id}>
-            <Link to={`/events/${event._id}`}>
-              <h3>{event.name}</h3>
-            </Link>
-          </div>
-        );
-      })}
+      <NewEvent refreshEvents={getAllEvents} />
+      {events.map((event) => (
+        <EventCard key={event._id} {...event} />
+      ))}
     </div>
   );
 }

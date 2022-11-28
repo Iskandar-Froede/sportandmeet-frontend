@@ -1,26 +1,33 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
+const API_URL = "http://localhost:5005";
 
-const NewComment = ({ fetchComments }) => {
+function NewComment(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [created, setCreated] = useState("");
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-
-    const response = await fetch("http://localhost:5005/comments", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ title, description, created }),
-    });
-    setTitle("");
-    setDescription("");
-    setCreated("");
-    fetchComments();
   };
+
+  const { id } = props;
+  const requestBody = { title, description, id };
+
+  axios
+    .post(`${API_URL}/events`, requestBody)
+    .then((response) => {
+      // Reset the state to clear the inputs
+      setTitle("");
+      setDescription("");
+      setCreated("");
+
+      // Invoke the callback function coming through the props
+      // from the ProjectDetailsPage, to refresh the project details
+      props.refreshProject();
+    })
+    .catch((error) => console.log(error));
 
   return (
     <div>
@@ -54,6 +61,5 @@ const NewComment = ({ fetchComments }) => {
       </form>
     </div>
   );
-};
-
+}
 export default NewComment;
