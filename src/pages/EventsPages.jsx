@@ -63,8 +63,7 @@ function EventsPages() {
      axios
       .get(`${API_URL}/events`)
       .then((response) => {
-        console.log (response.data)
-        setEvents (response.data.events)})
+        setEvents (response.data)})
       .catch((error) => console.log(error));
   };
   
