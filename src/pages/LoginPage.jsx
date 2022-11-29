@@ -4,11 +4,7 @@ import { SessionContext } from "../contexts/Session.Context";
 import "../App.css";
 
 const LoginPage = () => {
-<<<<<<< HEAD
   const { setToken, setUser} = useContext(SessionContext);
-=======
-  const { setToken, setUser } = useContext(SessionContext);
->>>>>>> 67ec5a6597d1cc14fe713ea1f29b9de3e13615b2
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +29,6 @@ console.log("hello",parsed)
       setToken(parsed.token);
 
       localStorage.setItem("authToken", parsed.token);
-      setUser(parsed.user);
 
       navigate("/profile");
     } else {
