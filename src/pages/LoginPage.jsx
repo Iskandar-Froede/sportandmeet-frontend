@@ -4,7 +4,7 @@ import { SessionContext } from "../contexts/Session.Context";
 import "../App.css";
 
 const LoginPage = () => {
-  const { setToken, setUser} = useContext(SessionContext);
+  const { setToken, setUser, verifyToken } = useContext(SessionContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,12 +23,13 @@ const LoginPage = () => {
       body: JSON.stringify({ email, password }),
     });
     const parsed = await response.json();
-console.log("hello",parsed) 
+    console.log("hello", parsed);
 
     if (parsed.status === 200) {
       setToken(parsed.token);
 
       localStorage.setItem("authToken", parsed.token);
+      setUser(parsed.user);
 
       navigate("/profile");
     } else {
