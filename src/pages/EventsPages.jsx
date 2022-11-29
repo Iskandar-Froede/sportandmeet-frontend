@@ -77,7 +77,7 @@ function EventsPages() {
     <div>
       <NewEvent refreshEvents={getAllEvents} />
       {events.map((event) => (
-        <EventCard key={event._id} {...event} />
+        <Link to={`/events/${event._id}`}> {event.name} </Link>
       ))}
     </div>
   );

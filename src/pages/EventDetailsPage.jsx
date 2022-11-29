@@ -6,7 +6,7 @@ import NewComment from "../Components/NewComment";
 
 const API_URL = "http://localhost:5005";
 
-function EventDetailsPage(props) {
+function EventDetailsPage() {
   const [event, setEvent] = useState(null);
 
   const { Id } = useParams();
@@ -29,16 +29,15 @@ function EventDetailsPage(props) {
 
   return (
     <div>
-      <h2>EventDetailsPage</h2>
+      <h2>Event Details Page</h2>
       {event && (
         <>
-          <h1>{event.name}</h1>
-          <p>{event.sport}</p>
-          <p>{event.date}</p>
-          <p>{event.time}</p>
-          <p>{event.location}</p>
-          <p>{event.participants}</p>
-          <p>{event.comment}</p>
+          <h1>Event name: {event.name}</h1>
+          <h3>Sport event: {event.sport}</h3>
+          <p>Date: {event.date}</p>
+          <p>Time: {event.time}</p>
+          <p>Location: {event.location}</p>
+          <p>Number of participants: {event.participants}</p>
         </>
       )}
 

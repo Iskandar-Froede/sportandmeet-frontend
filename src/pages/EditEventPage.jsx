@@ -60,15 +60,16 @@ function EditEventPage(props) {
       <h1>Edit The Event</h1>
       <form>
         <label>
-          Name :
+          Event name :
           <input
             type="text"
             value={name}
+            placeholer={name}
             onChange={(event) => setName(event.target.value)}
           />
         </label>
         <label>
-          Sport :
+          Sport events :
           <input
             type="text"
             value={sport}
@@ -100,7 +101,7 @@ function EditEventPage(props) {
           />
         </label>
         <label>
-          Number of Participants :
+          Number of participants :
           <input
             value={participants}
             type="number"
