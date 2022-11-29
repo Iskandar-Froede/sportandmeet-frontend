@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { SessionContext } from "./contexts/Session.Context";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
 import EventsPage from "./pages/EventsPages";
@@ -13,16 +13,11 @@ import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   const { isAuthenticated } = useContext(SessionContext);
-  console.log(isAuthenticated);
 
   return (
     <div className="App">
-      {isAuthenticated ? (
-        <NavLink to="/events">events</NavLink>
-      ) : (
-        <NavLink to="/login"></NavLink>
-      )}
-      <Navbar />
+
+      <Navbar authContext={isAuthenticated}/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignupPage />} />
