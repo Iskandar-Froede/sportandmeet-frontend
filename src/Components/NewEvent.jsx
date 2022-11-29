@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+import { SessionContext } from "../contexts/Session.Context";
 
 const API_URL = "http://localhost:5005";
 
@@ -11,10 +12,21 @@ function NewEvent(props) {
   const [location, setLocation] = useState("");
   const [participants, setParticipants] = useState(0);
 
+  const { user } = useContext(SessionContext);
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("here user from contex", user);
 
-    const requestBody = { name, sport, date, time, location, participants };
+    const requestBody = {
+      name,
+      sport,
+      date,
+      time,
+      location,
+      participants,
+      userId: user._id,
+    };
     axios
       .post(`${API_URL}/events`, requestBody)
       .then((response) => {

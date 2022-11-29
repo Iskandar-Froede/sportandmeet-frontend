@@ -10,11 +10,11 @@ const SessionContextProvider = ({ children }) => {
   //  defaultValue: undefined,
   // });
   const [user, setUser] = useState();
-  const token1 = localStorage.getItem("authToken");
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const verifyToken = async () => {
+    const token1 = localStorage.getItem("authToken");
     console.log(token1);
     const response = await fetch("http://localhost:5005/auth/verify", {
       headers: {
@@ -30,13 +30,8 @@ const SessionContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (token) {
-      verifyToken();
-    } else {
-      setIsAuthenticated(false);
-      setUser();
-    }
-  }, [token]);
+    verifyToken();
+  }, []);
 
   const fetchWithToken =
     (method, endpoint, callback, body = null) =>

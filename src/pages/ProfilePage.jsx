@@ -22,7 +22,8 @@ function ProfilePage() {
 
   return (
     <div>
-      <h1>WElcome {user.username} </h1>
+      <h1>Welcome {user.username} </h1>
+      <h2>Your events: {user.event.name}</h2>
     </div>
   );
 }
