@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SessionContext } from "../contexts/Session.Context";
+import "../App.css";
 
 const LoginPage = () => {
   const { setToken } = useContext(SessionContext);
