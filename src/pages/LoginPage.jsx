@@ -23,6 +23,7 @@ const LoginPage = () => {
       body: JSON.stringify({ email, password }),
     });
     const parsed = await response.json();
+    console.log("hello", parsed);
 
     if (parsed.status === 200) {
       setToken(parsed.token);
