@@ -37,7 +37,7 @@ function EditEventPage(props) {
 
     const requestBody = { name, sport, date, time, location, participants };
 
-    axios.put(`${API_URL}/eventss/${Id}`, requestBody).then((response) => {
+    axios.put(`${API_URL}/events/${Id}`, requestBody).then((response) => {
       // Once the request is resolved successfully and the project
       // is updated we navigate back to the details page
       navigate(`/events/${Id}`);
@@ -58,7 +58,7 @@ function EditEventPage(props) {
   return (
     <div>
       <h1>Edit The Event</h1>
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <label>
           Event name :
           <input

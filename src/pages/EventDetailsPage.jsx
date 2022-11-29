@@ -14,7 +14,7 @@ function EventDetailsPage() {
 
   const getEvent = () => {
     axios
-      .get(`${API_URL}/events/singleEvent/${Id}`)
+      .get(`${API_URL}/events/${Id}`)
       .then((response) => {
         const oneEvent = response.data;
         console.log(oneEvent);
