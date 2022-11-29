@@ -18,11 +18,10 @@ function App() {
   return (
     <div className="App">
       {isAuthenticated ? (
-        <NavLink to="/events">Events</NavLink>
+        <NavLink to="/events">events</NavLink>
       ) : (
-        <NavLink to="/login">Login</NavLink>
+        <NavLink to="/login"></NavLink>
       )}
-
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
