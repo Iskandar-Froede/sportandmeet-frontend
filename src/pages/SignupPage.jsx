@@ -36,8 +36,8 @@ const SignupPage = () => {
 
   return (
     <div className="auth-form-container">
-      <h2>SIGNUP</h2>
       <form className="signup-form" onSubmit={handleSubmit}>
+        <h2>SIGN UP</h2>
         <label htmlFor="username">username </label>
         <input
           type="text"

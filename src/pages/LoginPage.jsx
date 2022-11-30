@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SessionContext } from "../contexts/Session.Context";
- import "../App.css";
+import "../Styles/login.css";
 
- const LoginPage = () => {
-   const { setToken, setUser, verifyToken } = useContext(SessionContext);
+const LoginPage = () => {
+  const { setToken, setUser, verifyToken } = useContext(SessionContext);
 
-   const [email, setEmail] = useState("");
-   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState();
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
@@ -21,22 +21,23 @@ import { SessionContext } from "../contexts/Session.Context";
     });
     const parsed = await response.json();
     if (parsed.status === 200) {
-       setToken(parsed.token);
+      setToken(parsed.token);
 
-       localStorage.setItem("authToken", parsed.token);
-       verifyToken();
-       setUser(parsed.user);
+      localStorage.setItem("authToken", parsed.token);
+      verifyToken();
+      setUser(parsed.user);
 
-       navigate("/profile");
+      navigate("/profile");
     } else {
       setError(parsed);
     }
   };
   return (
     <div className="auth-form-container">
-      <h2>LOGIN</h2>
       <form className="login-form" onSubmit={handleSubmit}>
         {error?.message && <p>{error.message}</p>}
+        <h2>LOGIN</h2>
+
         <label htmlFor="email">email</label>
         <input
           type="email"

@@ -16,8 +16,7 @@ function App() {
 
   return (
     <div className="App">
-
-      <Navbar authContext={isAuthenticated}/>
+      <Navbar authContext={isAuthenticated} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignupPage />} />
