@@ -2,7 +2,8 @@ import React, { useEffect, useContext, useState } from "react";
 import axios from "axios";
 import { SessionContext } from "../contexts/Session.Context";
 import userEvent from "@testing-library/user-event";
-import "../Styles/profile.css";
+import "../Styles/Profile.css";
+import { Link } from "react-router-dom";
 
 function ProfilePage() {
   const { user, setUser } = useContext(SessionContext);
@@ -29,15 +30,19 @@ function ProfilePage() {
   useEffect(() => {
     const verifyUser = async () => {
       const storedToken = localStorage.getItem("authToken");
+
       let verifyRes = await axios.get(`http://localhost:5005/auth/verify`, {
         headers: { authorization: `Bearer ${storedToken}` },
       });
+
       const getUserEvent = await axios.get(
         `http://localhost:5005/events/user-events`,
         {
           headers: { authorization: `Bearer ${storedToken}` },
         }
       );
+
+      console.log(getUserEvent);
 
       setUserEvent(getUserEvent.data.event);
       //   console.log("profile page", verifyRes.data);
@@ -67,7 +72,7 @@ function ProfilePage() {
       <h2>Your events: </h2>
       {userEvent &&
         userEvent.map((oneEvent) => {
-          return <h3>{oneEvent.name}</h3>;
+          return <Link className="event-link" to={`/events/${oneEvent._id}`}>{oneEvent.name}</Link>;
         })}
     </div>
   );

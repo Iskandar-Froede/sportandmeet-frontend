@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { SessionContext } from "../contexts/Session.Context";
+import '../Styles/events.css';
 
 const API_URL = "http://localhost:5005";
 
@@ -46,7 +47,7 @@ function NewEvent(props) {
   return (
     <div>
       <h2>Add a new event</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="events-form">
         <label>
           Name :
           <input

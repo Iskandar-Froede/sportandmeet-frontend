@@ -44,9 +44,25 @@ button {
   cursor: pointer;
   color: #93a5cf;
   width: 150px;
+  margin-bottom: 1em;
 }
 
 .avatar {
   width: 100px;
   height: 200px;
+}
+
+.event-link {
+  border: none;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #93a5cf;
+  width: 100px;
+  text-decoration: none;
+}
+
+.event-link:not(:last-child) {
+  margin-right: 0.4em;
 }
