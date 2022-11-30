@@ -52,6 +52,7 @@ const SessionContextProvider = ({ children }) => {
   return (
     <SessionContext.Provider
       value={{
+        verifyToken,
         token,
         setToken,
         isAuthenticated,

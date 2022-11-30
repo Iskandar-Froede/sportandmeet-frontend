@@ -30,6 +30,7 @@ function ProfilePage() {
     return <p>...is Loading</p>;
   }
 
+  console.log (user)
   return (
     <div>
       <h1>Welcome {user.username} </h1>
