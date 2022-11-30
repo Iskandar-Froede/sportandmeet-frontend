@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import axios from "axios";
 import { SessionContext } from "../contexts/Session.Context";
 import userEvent from "@testing-library/user-event";
+import "../Styles/profile.css";
 
 function ProfilePage() {
   const { user, setUser } = useContext(SessionContext);
@@ -50,12 +51,15 @@ function ProfilePage() {
 
   console.log(user);
   return (
-    <div>
-      <h1>Welcome {user.username} </h1>
+    <div className="profile-container">
+      <h1>Welcome {user.username} to Sport and Meet </h1>
       {user.profileImage && <img src={user.profileImage} alt="avatar" />}
-      <form onSubmit={handleUpload}>
-        <input name="imageUrl" type="file" />
-        <button>Upload Image</button>
+      <h3>Profile Image</h3>
+
+      <form className="profile-img" onSubmit={handleUpload}>
+        <input className="avatar" name="imageUrl" type="file" />
+
+        <button className="upload-btn">Upload Image</button>
       </form>
       <h2>Your events: </h2>
       {userEvent &&

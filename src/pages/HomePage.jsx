@@ -1,12 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../Styles/home.css";
 
 function Home() {
   return (
-    <div>
+    <div className="home-container">
       <h1>Welcome to Sport and Meet</h1>
-      <Link to="/signup">SIGN UP</Link>
-      <Link to="/login">LOGIN</Link>
+      <h3>Do you want to register to Sport and Meet? </h3>
+      <Link to="/signup">
+        <button className="btn-home">REGISTER</button>
+      </Link>
+      <h3>Already have an account?</h3>
+      <Link to="/login">
+        <button className="btn-home">LOGIN</button>
+      </Link>
     </div>
   );
 }
