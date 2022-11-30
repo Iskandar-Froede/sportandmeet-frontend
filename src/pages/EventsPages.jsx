@@ -12,36 +12,27 @@ const API_URL = "http://localhost:5005";
 /*
 const EventsPage = () => {
   const { token, fetchWithToken } = useContext(SessionContext);
-
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   // Function to fetch our events from our API (backend)
-
   const fetchEvents = fetchWithToken("GET", "/events", setEvents);
-
   //Fetch our events at mounting time
-
   useEffect(() => {
     fetchEvents();
     setIsLoading(false);
   }, []);
-
   // Delete an event
-
   const deleteEvent = async (eventId) => {
     await fetch(`http://localhost:5005/events/${eventId}`, {
       method: "DELETE",
     });
     fetchEvents();
   };
-
   return (
     <div>
       <h1>My Evenst</h1>
       {token}
       <NewEvent fetchEvents={fetchEvents} />
-
       {events.map((event) => (
         <Events
           key={event._id}
@@ -62,7 +53,9 @@ function EventsPages() {
   const getAllEvents = () => {
     axios
       .get(`${API_URL}/events`)
-      .then((response) => setEvents(response.data))
+      .then((response) => {
+        setEvents(response.data);
+      })
       .catch((error) => console.log(error));
   };
 
