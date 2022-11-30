@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       {isAuthenticated ? (
-        <NavLink to="/events">events</NavLink>
+        <NavLink to="/events"></NavLink>
       ) : (
         <NavLink to="/login"></NavLink>
       )}
