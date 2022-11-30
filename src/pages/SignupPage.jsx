@@ -42,6 +42,7 @@ const SignupPage = () => {
         <input
           type="text"
           name="username"
+          placeholder="create a username"
           value={username}
           onChange={handleChange}
         />
@@ -50,6 +51,7 @@ const SignupPage = () => {
         <input
           type="email"
           name="email"
+          placeholder="email"
           value={email}
           onChange={handleChange}
         />
@@ -58,6 +60,7 @@ const SignupPage = () => {
         <input
           type="password"
           name="password"
+          placeholder="password"
           value={password}
           onChange={handleChange}
         />

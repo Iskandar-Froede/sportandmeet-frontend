@@ -49,7 +49,7 @@ function ProfilePage() {
     <div>
       <h1>Welcome {user.username} </h1>
       <form onSubmit={handleUpload}>
-        <input name="imageUrl" type="file" />
+        <input className="avatar" name="imageUrl" type="file" />
         <button>Upload Image</button>
       </form>
       <h2>Your events: </h2>
