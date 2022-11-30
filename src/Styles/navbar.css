@@ -8,7 +8,7 @@ nav a {
   float: left;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 30px 150px;
   text-decoration: none;
   font-size: 17px;
 }
@@ -21,4 +21,8 @@ nav a:hover {
 nav a.active {
   background-color: #04aa6d;
   color: white;
+}
+
+.logout-btn {
+  margin-top: 12px;
 }

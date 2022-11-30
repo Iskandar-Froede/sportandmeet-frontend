@@ -15,12 +15,12 @@ function Navbar(props) {
   return (
     <nav>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/">HOME</Link>
       </li>
       {(authContext && (
         <>
           <li>
-            <Link to="/profile">Profile Page</Link>
+            <Link to="/profile">PROFILE</Link>
           </li>
           <li>
             <Link to="/events">EVENTS</Link>
@@ -36,7 +36,9 @@ function Navbar(props) {
           </li>
         </>
       )}
-      <button onClick={handleLogout}>LOGOUT</button>
+      <button className="logout-btn" onClick={handleLogout}>
+        LOGOUT
+      </button>
     </nav>
   );
 }
