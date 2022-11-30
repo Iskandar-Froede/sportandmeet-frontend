@@ -4,7 +4,7 @@ import { SessionContext } from "../contexts/Session.Context";
 import userEvent from "@testing-library/user-event";
 
 function ProfilePage() {
-  const { user } = useContext(SessionContext);
+  const { user, setUser } = useContext(SessionContext);
   const [userEvent, setUserEvent] = useState([]);
 
   const handleUpload = async (event) => {
@@ -15,10 +15,14 @@ function ProfilePage() {
     //create a new form data to send and append all the key value pairs to it
     const formData = new FormData();
     formData.append("imageUrl", image);
-
+    console.log("here is user", user);
     // Send the formData with all the key: value pairs attached to it
-    let res = await axios.post("http://localhost:5005/auth/upload", formData);
+    let res = await axios.post(
+      `http://localhost:5005/auth/upload/${user._id}`,
+      formData
+    );
     console.log("here is your new user", res.data);
+    setUser(res.data);
   };
 
   useEffect(() => {
@@ -48,6 +52,7 @@ function ProfilePage() {
   return (
     <div>
       <h1>Welcome {user.username} </h1>
+      {user.profileImage && <img src={user.profileImage} alt="avatar" />}
       <form onSubmit={handleUpload}>
         <input name="imageUrl" type="file" />
         <button>Upload Image</button>
