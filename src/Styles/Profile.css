@@ -14,10 +14,16 @@
   align-items: center;
   border: 1px solid aliceblue;
   border-radius: 10px;
-  width: 20vw;
-  padding-bottom: 2rem;
+  width: 30vw;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
 }
+
 .upload-btn {
-  width: 10vw;
-  height: 0.1vh;
+  height: 5vh;
+}
+
+img {
+  width: 150px;
+  height: 150px;
 }

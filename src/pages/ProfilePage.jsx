@@ -53,14 +53,17 @@ function ProfilePage() {
   return (
     <div className="profile-container">
       <h1>Welcome {user.username} to Sport and Meet </h1>
-      {user.profileImage && <img src={user.profileImage} alt="avatar" />}
+
       <h3>Profile Image</h3>
+      <div className="profile-img">
+        {user.profileImage && <img src={user.profileImage} alt="avatar" />}
 
-      <form className="profile-img" onSubmit={handleUpload}>
-        <input className="avatar" name="imageUrl" type="file" />
-
-        <button className="upload-btn">Upload Image</button>
-      </form>
+        <form onSubmit={handleUpload}>
+          <input name="imageUrl" type="file" />
+          <br></br>
+          <button className="upload-btn">Upload Image</button>
+        </form>
+      </div>
       <h2>Your events: </h2>
       {userEvent &&
         userEvent.map((oneEvent) => {
