@@ -1,19 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "../Styles/Navbar.css";
+import { Link, useNavigate } from "react-router-dom";
+import "../Styles/navbar.css";
 
 function Navbar(props) {
   const { authContext } = props;
 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    navigate("/");
+  };
+
   return (
     <nav>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/">HOME</Link>
       </li>
       {(authContext && (
         <>
           <li>
-            <Link to="/profile">Profile Page</Link>
+            <Link to="/profile">PROFILE</Link>
           </li>
           <li>
             <Link to="/events">EVENTS</Link>
@@ -29,6 +36,9 @@ function Navbar(props) {
           </li>
         </>
       )}
+      <button className="logout-btn" onClick={handleLogout}>
+        LOGOUT
+      </button>
     </nav>
   );
 }
