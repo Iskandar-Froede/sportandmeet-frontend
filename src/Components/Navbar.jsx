@@ -1,36 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { useRef } from "react";
-import "../Styles/navbar.css";
+import { Link, useNavigate } from "react-router-dom";
+import "../Styles/Navbar.css";
 
-function Navbar() {
-  const navRef = useRef();
+function Navbar(props) {
+  const { authContext } = props;
 
-  const showNavbar = () => {
-    navRef.current.classList.toggle("responsive_nav");
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    navigate("/");
   };
+
   return (
-    <header>
-      <h3>LOGO</h3>
-      <nav>
-        <Link to="/">HOME</Link>
-
-        <Link to="/signup">SIGNUP</Link>
-
-        <Link to="/login">LOGIN</Link>
-
-        <Link to="/events">EVENTS</Link>
-
-        <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-          <FaTimes />
-        </button>
-      </nav>
-
-      <button className="nav-btn" onClick={showNavbar}>
-        <FaBars />
-      </button>
-    </header>
+    <nav>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      {(authContext && (
+        <>
+          <li>
+            <Link to="/profile">Profile Page</Link>
+          </li>
+          <li>
+            <Link to="/events">EVENTS</Link>
+          </li>
+        </>
+      )) || (
+        <>
+          <li>
+            <Link to="/signup">SIGNUP</Link>
+          </li>
+          <li>
+            <Link to="/login">LOGIN</Link>
+          </li>
+        </>
+      )}
+      <button onClick={handleLogout}>LOGOUT</button>
+    </nav>
   );
 }
 export default Navbar;

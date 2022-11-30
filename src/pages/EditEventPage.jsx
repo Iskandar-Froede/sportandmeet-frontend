@@ -44,9 +44,7 @@ function EditEventPage(props) {
     });
   };
 
-  const deleteEvent = (event) => {
-    event.preventDefault();
-
+  const deleteEvent = () => {
     axios
       .delete(`${API_URL}/events/${Id}`)
       .then(() => {
@@ -113,10 +111,6 @@ function EditEventPage(props) {
 
         <input type="submit" value="Submit" />
       </form>
-
-      <button onClick={deleteEvent} style={{ backgroundColor: "red" }}>
-        Delete
-      </button>
     </div>
   );
 }
