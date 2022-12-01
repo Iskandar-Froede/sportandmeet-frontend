@@ -69,11 +69,18 @@ function ProfilePage() {
           <button className="upload-btn">Upload Image</button>
         </form>
       </div>
-      <h2>Your events: </h2>
+      <h2>Your events : </h2>
       {userEvent &&
         userEvent.map((oneEvent) => {
-          return <Link className="event-link" to={`/events/${oneEvent._id}`}>{oneEvent.name}</Link>;
+          return (
+            <Link className="event-link" to={`/events/${oneEvent._id}`}>
+              {oneEvent.name}
+            </Link>
+          );
         })}
+      <Link className="back-btn" to="/events">
+        <button>Back to events for add event or check all events</button>
+      </Link>
     </div>
   );
 }

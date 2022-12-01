@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import NewComment from "../Components/NewComment";
+import "../Styles/events.css";
 
 const API_URL = "http://localhost:5005";
 
@@ -28,7 +29,7 @@ function EventDetailsPage() {
   }, []);
 
   return (
-    <div>
+    <div className="details-container">
       <h2>Event Details Page</h2>
       {event && (
         <>
@@ -40,6 +41,13 @@ function EventDetailsPage() {
           <p>Number of participants: {event.participants}</p>
         </>
       )}
+
+      <h2>
+        Edit your event{" "}
+        <Link to={`/events/edit/${Id}`}>
+          <button>Edit Event</button>
+        </Link>
+      </h2>
 
       <NewComment refreshEvent={getEvent} eventId={Id} />
 
@@ -55,10 +63,6 @@ function EventDetailsPage() {
 
       <Link to="/events">
         <button>Back to events</button>
-      </Link>
-
-      <Link to={`/events/edit/${Id}`}>
-        <button>Edit Event</button>
       </Link>
     </div>
   );
