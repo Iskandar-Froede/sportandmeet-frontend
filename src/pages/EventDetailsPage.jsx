@@ -30,24 +30,21 @@ function EventDetailsPage() {
 
   return (
     <div className="details-container">
-      <h1>Event Information</h1>
+      <h1 style={{ textDecorationLine: "underline" }}>Event Information</h1>
       {event && (
         <>
           <h2>Event name: {event.name}</h2>
           <p>Sport event: {event.sport}</p>
-          <p>Date: {event.date}</p>
+          <p>Date: {event.date.toString().split("T")[0]}</p>
           <p>Time: {event.time}</p>
           <p>Location: {event.location}</p>
           <p>Number of participants: {event.participants}</p>
         </>
       )}
 
-      <h2>
-        Edit your event{" "}
-        <Link to={`/events/edit/${Id}`}>
-          <button>Edit Event</button>
-        </Link>
-      </h2>
+      <Link to={`/events/edit/${Id}`}>
+        <button>Edit Event</button>
+      </Link>
 
       <NewComment refreshEvent={getEvent} eventId={Id} />
 
@@ -62,7 +59,7 @@ function EventDetailsPage() {
         ))}
 
       <Link to="/events">
-        <button>Back to events</button>
+        <button className="back-btn">Back to events</button>
       </Link>
     </div>
   );

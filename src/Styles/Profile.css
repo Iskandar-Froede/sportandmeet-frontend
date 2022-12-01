@@ -27,4 +27,11 @@ img {
 .back-btn {
   padding-top: 1rem;
   width: 400px;
+  margin-top: 2rem;
+  color: #333;
+}
+
+.event-link {
+  margin-top: 0.5rem;
+  width: 18vw;
 }

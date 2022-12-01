@@ -65,8 +65,12 @@ function EventsPages() {
 
   return (
     <div className="list-events">
-      <h1>All events of Sport and Meet</h1>
+      <h1 style={{ textDecorationLine: "underline" }}>
+        All events of Sport and Meet
+      </h1>
+      <p>Just click on the event for more details</p>
       <br></br>
+
       {events.map((event) => (
         <Link className="event-link" to={`/events/${event._id}`}>
           {" "}

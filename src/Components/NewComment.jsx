@@ -3,6 +3,8 @@ import { useState } from "react";
 import axios from "axios";
 import { SessionContext } from "../contexts/Session.Context";
 import { useContext } from "react";
+import "../Styles/events.css";
+
 const API_URL = `${process.env.REACT_APP_URL}`;
 
 function NewComment(props) {
@@ -34,7 +36,7 @@ function NewComment(props) {
     <div>
       <h2>Add a new comment</h2>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="comment">
           Title :
           <input
             type="text"
@@ -42,7 +44,7 @@ function NewComment(props) {
             onChange={(event) => setTitle(event.target.value)}
           />
         </label>
-        <label>
+        <label className="comment">
           Description :
           <input
             value={description}

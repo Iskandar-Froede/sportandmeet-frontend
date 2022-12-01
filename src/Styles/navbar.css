@@ -27,7 +27,10 @@ nav a.active {
   margin-top: 12px;
 }
 
-img {
+.logo {
+  width: 125px;
+  height: 62px;
   float: left;
-  display: inline-block;
+  margin-left: 1.5rem;
+  margin-top: 0.6rem;
 }

@@ -74,6 +74,7 @@ function ProfilePage() {
       </div>
 
       <h2>Your events : </h2>
+      <p>Just click on the event name if you want to edit your event</p>
       {userEvent &&
         userEvent.map((oneEvent) => {
           return (
