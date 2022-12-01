@@ -35,7 +35,7 @@ function EventDetailsPage() {
         <>
           <h2>Event name: {event.name}</h2>
           <p>Sport event: {event.sport}</p>
-          <p>Date: {event.date}</p>
+          <p>Date: {event.date.toString().split("T")[0]}</p>
           <p>Time: {event.time}</p>
           <p>Location: {event.location}</p>
           <p>Number of participants: {event.participants}</p>
