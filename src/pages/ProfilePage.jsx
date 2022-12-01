@@ -20,7 +20,7 @@ function ProfilePage() {
     console.log("here is user", user);
     // Send the formData with all the key: value pairs attached to it
     let res = await axios.post(
-      `http://localhost:5005/auth/upload/${user._id}`,
+      `${process.env.REACT_APP_URL}/auth/upload/${user._id}`,
       formData
     );
     console.log("here is your new user", res.data);
@@ -31,12 +31,15 @@ function ProfilePage() {
     const verifyUser = async () => {
       const storedToken = localStorage.getItem("authToken");
 
-      let verifyRes = await axios.get(`http://localhost:5005/auth/verify`, {
-        headers: { authorization: `Bearer ${storedToken}` },
-      });
+      let verifyRes = await axios.get(
+        `${process.env.REACT_APP_URL}/auth/verify`,
+        {
+          headers: { authorization: `Bearer ${storedToken}` },
+        }
+      );
 
       const getUserEvent = await axios.get(
-        `http://localhost:5005/events/user-events`,
+        `${process.env.REACT_APP_URL}/events/user-events`,
         {
           headers: { authorization: `Bearer ${storedToken}` },
         }
@@ -69,11 +72,21 @@ function ProfilePage() {
           <button className="upload-btn">Upload Image</button>
         </form>
       </div>
-      <h2>Your events: </h2>
+
+      <h2>Your events : </h2>
       {userEvent &&
         userEvent.map((oneEvent) => {
-          return <Link className="event-link" to={`/events/${oneEvent._id}`}>{oneEvent.name}</Link>;
+          return (
+            <Link className="event-link" to={`/events/${oneEvent._id}`}>
+              {oneEvent.name}
+            </Link>
+          );
         })}
+      <Link to="/events">
+        <button className="back-btn">
+          Click here to add an event or check all events
+        </button>
+      </Link>
     </div>
   );
 }

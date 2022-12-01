@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { SessionContext } from "../contexts/Session.Context";
 import { useContext } from "react";
-const API_URL = "http://localhost:5005";
+const API_URL = `${process.env.REACT_APP_URL}`;
 
 function NewComment(props) {
   const [title, setTitle] = useState("");

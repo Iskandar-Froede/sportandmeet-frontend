@@ -2,8 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import "../Styles/events.css";
 
-const API_URL = "http://localhost:5005";
+const API_URL = `${process.env.REACT_APP_URL}`;
 
 function EditEventPage(props) {
   const [name, setName] = useState("");
@@ -58,7 +59,7 @@ function EditEventPage(props) {
   };
 
   return (
-    <div>
+    <div className="edit-container">
       <h1>Edit The Event</h1>
       <form onSubmit={handleFormSubmit}>
         <label>

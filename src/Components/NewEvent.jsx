@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { SessionContext } from "../contexts/Session.Context";
-import '../Styles/events.css';
+import "../Styles/events.css";
 
-const API_URL = "http://localhost:5005";
+const API_URL = `${process.env.REACT_APP_URL}`;
 
 function NewEvent(props) {
   const [name, setName] = useState("");
@@ -45,11 +45,11 @@ function NewEvent(props) {
   };
 
   return (
-    <div>
-      <h2>Add a new event</h2>
+    <div className="add-event">
+      <h2>Add a new sport event</h2>
       <form onSubmit={handleSubmit} className="events-form">
         <label>
-          Name :
+          Event Name :
           <input
             type="text"
             value={name}
@@ -57,7 +57,7 @@ function NewEvent(props) {
           />
         </label>
         <label>
-          Sport :
+          Type of Sport :
           <input
             type="text"
             value={sport}
@@ -93,6 +93,7 @@ function NewEvent(props) {
           <input
             value={participants}
             type="number"
+            min="1"
             onChange={(event) => setParticipants(event.target.value)}
           />
         </label>

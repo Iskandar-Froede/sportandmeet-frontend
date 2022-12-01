@@ -26,3 +26,8 @@ nav a.active {
 .logout-btn {
   margin-top: 12px;
 }
+
+img {
+  float: left;
+  display: inline-block;
+}
