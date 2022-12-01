@@ -48,13 +48,25 @@ const EventsPage = () => {
 */
 
 function EventsPages() {
+  const [fullEventList, setFullEventList] = useState([]);
   const [events, setEvents] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearchInput = (event)=>{
+    const inputText = event.target.value;
+    //for making the seach bar look up the different sports
+    setSearchText(inputText)
+    setEvents(fullEventList.filter((event)=>{
+      return event.name.toLowerCase().includes(inputText.toLowerCase())
+    }))
+  }
 
   const getAllEvents = () => {
     axios
       .get(`${API_URL}/events`)
       .then((response) => {
         setEvents(response.data);
+        setFullEventList(response.data)
       })
       .catch((error) => console.log(error));
   };
@@ -68,6 +80,9 @@ function EventsPages() {
       <h1 style={{ textDecorationLine: "underline" }}>
         All events of Sport and Meet
       </h1>
+      {/* to create the seach bar */}
+      <input onChange={handleSearchInput} value={searchText} type="text" placeholder="Search events" /> 
+    
       <p>Just click on the event for more details</p>
       <br></br>
 
