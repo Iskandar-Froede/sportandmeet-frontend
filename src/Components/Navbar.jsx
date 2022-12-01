@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../Styles/navbar.css";
-import logo from "../logosp.png";
+import logo from "../logo.png";
 
 function Navbar(props) {
   const { authContext } = props;
@@ -15,6 +15,8 @@ function Navbar(props) {
 
   return (
     <nav>
+      <img className="logo" src={logo} alt="logo"></img>
+
       <li>
         <Link to="/">HOME</Link>
       </li>

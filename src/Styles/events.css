@@ -26,3 +26,11 @@ hr.rounded {
   border-top: 5px solid aliceblue;
   border-radius: 5px;
 }
+
+.comment {
+  align-items: center;
+}
+
+label {
+  align-items: center;
+}

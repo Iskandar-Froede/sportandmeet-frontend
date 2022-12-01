@@ -42,12 +42,9 @@ function EventDetailsPage() {
         </>
       )}
 
-      <h2>
-        Edit your event{" "}
-        <Link to={`/events/edit/${Id}`}>
-          <button>Edit Event</button>
-        </Link>
-      </h2>
+      <Link to={`/events/edit/${Id}`}>
+        <button>Edit Event</button>
+      </Link>
 
       <NewComment refreshEvent={getEvent} eventId={Id} />
 
@@ -62,7 +59,7 @@ function EventDetailsPage() {
         ))}
 
       <Link to="/events">
-        <button>Back to events</button>
+        <button className="back-btn">Back to events</button>
       </Link>
     </div>
   );

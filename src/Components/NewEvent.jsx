@@ -45,7 +45,7 @@ function NewEvent(props) {
   };
 
   return (
-    <div className="add-event">
+    <div>
       <h2>Add a new sport event</h2>
       <form onSubmit={handleSubmit} className="events-form">
         <label>
@@ -83,8 +83,10 @@ function NewEvent(props) {
         <label>
           Location :
           <input
+            style={{ width: "500px" }}
             value={location}
             type="text"
+            placeholder="your sport event address or meeting point"
             onChange={(event) => setLocation(event.target.value)}
           />
         </label>
