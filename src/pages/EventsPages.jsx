@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import EventCard from "../Components/EventCard";
 import NewEvent from "../Components/NewEvent";
 
-const API_URL = "http://localhost:5005";
+const API_URL = `${process.env.REACT_APP_URL}`;
 
 // import { SessionContext } from "../contexts/Session.Context";
 

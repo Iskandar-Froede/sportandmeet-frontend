@@ -20,7 +20,7 @@ function ProfilePage() {
     console.log("here is user", user);
     // Send the formData with all the key: value pairs attached to it
     let res = await axios.post(
-      `http://localhost:5005/auth/upload/${user._id}`,
+      `${process.env.REACT_APP_URL}/auth/upload/${user._id}`,
       formData
     );
     console.log("here is your new user", res.data);
