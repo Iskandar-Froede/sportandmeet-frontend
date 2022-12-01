@@ -30,7 +30,7 @@ function EventDetailsPage() {
 
   return (
     <div className="details-container">
-      <h1>Event Information</h1>
+      <h1 style={{ textDecorationLine: "underline" }}>Event Information</h1>
       {event && (
         <>
           <h2>Event name: {event.name}</h2>
