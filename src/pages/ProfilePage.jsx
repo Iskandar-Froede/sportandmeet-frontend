@@ -69,6 +69,7 @@ function ProfilePage() {
           <button className="upload-btn">Upload Image</button>
         </form>
       </div>
+
       <h2>Your events : </h2>
       {userEvent &&
         userEvent.map((oneEvent) => {
@@ -78,8 +79,10 @@ function ProfilePage() {
             </Link>
           );
         })}
-      <Link className="back-btn" to="/events">
-        <button>Back to events for add event or check all events</button>
+      <Link to="/events">
+        <button className="back-btn">
+          Click here to add an event or check all events
+        </button>
       </Link>
     </div>
   );

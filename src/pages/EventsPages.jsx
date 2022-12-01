@@ -64,11 +64,17 @@ function EventsPages() {
   }, []);
 
   return (
-    <div>
-      <NewEvent refreshEvents={getAllEvents} />
+    <div className="list-events">
+      <h1>All events of Sport and Meet</h1>
+      <br></br>
       {events.map((event) => (
-        <Link className="event-link" to={`/events/${event._id}`}> {event.name} </Link>
+        <Link className="event-link" to={`/events/${event._id}`}>
+          {" "}
+          {event.name}{" "}
+        </Link>
       ))}
+      <hr className="rounded"></hr>
+      <NewEvent refreshEvents={getAllEvents} />
     </div>
   );
 }

@@ -30,11 +30,11 @@ function EventDetailsPage() {
 
   return (
     <div className="details-container">
-      <h2>Event Details Page</h2>
+      <h1>Event Information</h1>
       {event && (
         <>
-          <h1>Event name: {event.name}</h1>
-          <h3>Sport event: {event.sport}</h3>
+          <h2>Event name: {event.name}</h2>
+          <p>Sport event: {event.sport}</p>
           <p>Date: {event.date}</p>
           <p>Time: {event.time}</p>
           <p>Location: {event.location}</p>

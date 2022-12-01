@@ -46,10 +46,10 @@ function NewEvent(props) {
 
   return (
     <div className="add-event">
-      <h2>Add a new event</h2>
+      <h2>Add a new sport event</h2>
       <form onSubmit={handleSubmit} className="events-form">
         <label>
-          Name :
+          Event Name :
           <input
             type="text"
             value={name}
@@ -57,7 +57,7 @@ function NewEvent(props) {
           />
         </label>
         <label>
-          Sport :
+          Type of Sport :
           <input
             type="text"
             value={sport}
@@ -93,6 +93,7 @@ function NewEvent(props) {
           <input
             value={participants}
             type="number"
+            min="1"
             onChange={(event) => setParticipants(event.target.value)}
           />
         </label>
