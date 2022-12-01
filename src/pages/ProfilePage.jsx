@@ -31,12 +31,15 @@ function ProfilePage() {
     const verifyUser = async () => {
       const storedToken = localStorage.getItem("authToken");
 
-      let verifyRes = await axios.get(`http://localhost:5005/auth/verify`, {
-        headers: { authorization: `Bearer ${storedToken}` },
-      });
+      let verifyRes = await axios.get(
+        `${process.env.REACT_APP_URL}/auth/verify`,
+        {
+          headers: { authorization: `Bearer ${storedToken}` },
+        }
+      );
 
       const getUserEvent = await axios.get(
-        `http://localhost:5005/events/user-events`,
+        `${process.env.REACT_APP_URL}/events/user-events`,
         {
           headers: { authorization: `Bearer ${storedToken}` },
         }
