@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import NewComment from "../Components/NewComment";
 import "../Styles/events.css";
+import { SessionContext } from "../contexts/Session.Context";
 
 const API_URL = `${process.env.REACT_APP_URL}`;
 
 function EventDetailsPage() {
   const [event, setEvent] = useState(null);
 
+  const { user, setUser } = useContext(SessionContext);
+
   const { Id } = useParams();
-  console.log(Id);
+  console.log("here come user", user);
+
+  const handleJoin = async (eventId) => {
+    console.log(eventId);
+    const joinUser = await axios.get(
+      `${API_URL}/events/join/${user._id}/${eventId}`
+    );
+    setUser(joinUser.data);
+  };
 
   const getEvent = () => {
     axios
@@ -41,6 +52,20 @@ function EventDetailsPage() {
           <p>Number of participants: {event.participants}</p>
         </>
       )}
+
+      <button
+        type="button"
+        onClick={() => {
+          handleJoin(event._id);
+        }}
+      >
+        Join Event
+      </button>
+      <p>hier join event: </p>
+      {user.joinEvent &&
+        user.joinEvent.map((event) => {
+          return <p>{event.name}</p>;
+        })}
 
       <Link to={`/events/edit/${Id}`}>
         <button>Edit Event</button>

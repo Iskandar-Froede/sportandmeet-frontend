@@ -8,8 +8,8 @@ function Home() {
       <h1>Welcome to Sport and Meet</h1>
       <h2>
         {" "}
-        Have you ever want to play any sport but you are new in town and you
-        don’t have anyone to play with?
+        Have you ever want to play any sport but you are new in town<br></br>{" "}
+        and you don’t have anyone to play with?
       </h2>
       <h3>Do you want to register to Sport and Meet? </h3>
       <Link to="/signup">
