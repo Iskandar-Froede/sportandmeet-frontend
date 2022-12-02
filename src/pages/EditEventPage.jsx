@@ -98,6 +98,7 @@ function EditEventPage(props) {
         <label>
           Location :
           <input
+            style={{ width: "500px" }}
             value={location}
             type="text"
             onChange={(event) => setLocation(event.target.value)}

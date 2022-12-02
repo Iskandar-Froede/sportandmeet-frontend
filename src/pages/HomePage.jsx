@@ -11,7 +11,7 @@ function Home() {
         Have you ever want to play any sport but you are new in town<br></br>{" "}
         and you don’t have anyone to play with?
       </h2>
-      <h3>Do you want to register to Sport and Meet? </h3>
+      <h3>Do you want to join Sport and Meet? </h3>
       <Link to="/signup">
         <button className="btn-home">REGISTER</button>
       </Link>

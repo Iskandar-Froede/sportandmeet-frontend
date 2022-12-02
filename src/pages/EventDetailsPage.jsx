@@ -65,29 +65,31 @@ function EventDetailsPage() {
       >
         Join Event
       </button>
-      <hr className="rounded-comment"></hr>
+
+      <Link to="/profile">
+        <button className="back-btn">Back to your profile</button>
+      </Link>
+
+      {/*   <hr className="rounded-comment"></hr>
       <h2>History of your joined events: </h2>
       {user.joinEvent &&
         user.joinEvent.map((event) => {
           return <p>{event.name}</p>;
         })}
+  
+  */}
 
       <hr className="rounded-comment"></hr>
       <NewComment refreshEvent={getEvent} eventId={Id} />
 
       {event &&
         event.comment.map((comment) => (
-          <li key={comment._id}>
-            <h3>{comment.title}</h3>
-            <h4>Description:</h4>
-            <p>{comment.description}</p>
-            <p>{comment.created}</p>
-          </li>
+          <div key={comment._id}>
+            <h3 style={{ textDecorationLine: "underline" }}>Comment history</h3>
+            <p>Title: {comment.title}</p>
+            <p>Description: {comment.description}</p>
+          </div>
         ))}
-
-      <Link to="/events">
-        <button className="back-btn">Back to events</button>
-      </Link>
     </div>
   );
 }

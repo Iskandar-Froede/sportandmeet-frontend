@@ -46,7 +46,7 @@ function NewEvent(props) {
 
   return (
     <div>
-      <h2>Add a new sport event</h2>
+      <h2>Create a new sport event</h2>
       <form onSubmit={handleSubmit} className="events-form">
         <label>
           Event Name :

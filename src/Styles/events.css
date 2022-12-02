@@ -25,6 +25,7 @@ hr.rounded {
   margin-top: 4rem;
   border-top: 5px solid aliceblue;
   border-radius: 5px;
+  width: 98%;
 }
 
 .comment {

@@ -3,11 +3,26 @@ import axios from "axios";
 import { SessionContext } from "../contexts/Session.Context";
 import userEvent from "@testing-library/user-event";
 import "../Styles/Profile.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
+const API_URL = `${process.env.REACT_APP_URL}`;
 
 function ProfilePage() {
   const { user, setUser } = useContext(SessionContext);
   const [userEvent, setUserEvent] = useState([]);
+
+  // user can join the event
+  const [event, setEvent] = useState(null);
+  const { Id } = useParams();
+  console.log("here come user", user);
+
+  const handleJoin = async (eventId) => {
+    console.log(eventId);
+    const joinUser = await axios.get(
+      `${API_URL}/events/join/${user._id}/${eventId}`
+    );
+    setUser(joinUser.data);
+  };
 
   const handleUpload = async (event) => {
     event.preventDefault();
@@ -73,8 +88,13 @@ function ProfilePage() {
         </form>
       </div>
 
-      <h2>Your events : </h2>
-      <p>Just click on the event name if you want to edit your event</p>
+      <h2 style={{ textDecorationLine: "underline" }}>
+        History of your created events :{" "}
+      </h2>
+      <p>
+        Just click on the event name if you want to have more details of the
+        events or to edit your event
+      </p>
       {userEvent &&
         userEvent.map((oneEvent) => {
           return (
@@ -83,11 +103,19 @@ function ProfilePage() {
             </Link>
           );
         })}
+
       <Link to="/events">
-        <button className="back-btn">
-          Click here to add an event or check all events
-        </button>
+        <button className="back-btn">Click here to CREATE an event</button>
       </Link>
+
+      <hr className="rounded-comment"></hr>
+      <h2 style={{ textDecorationLine: "underline" }}>
+        History of your joined events:{" "}
+      </h2>
+      {user.joinEvent &&
+        user.joinEvent.map((event) => {
+          return <p>{event.name}</p>;
+        })}
     </div>
   );
 }
