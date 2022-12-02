@@ -53,6 +53,10 @@ function EventDetailsPage() {
         </>
       )}
 
+      <Link to={`/events/edit/${Id}`}>
+        <button>Edit Event</button>
+      </Link>
+
       <button
         type="button"
         onClick={() => {
@@ -61,16 +65,14 @@ function EventDetailsPage() {
       >
         Join Event
       </button>
-      <p>hier join event: </p>
+      <hr className="rounded-comment"></hr>
+      <h2>History of your joined events: </h2>
       {user.joinEvent &&
         user.joinEvent.map((event) => {
           return <p>{event.name}</p>;
         })}
 
-      <Link to={`/events/edit/${Id}`}>
-        <button>Edit Event</button>
-      </Link>
-
+      <hr className="rounded-comment"></hr>
       <NewComment refreshEvent={getEvent} eventId={Id} />
 
       {event &&

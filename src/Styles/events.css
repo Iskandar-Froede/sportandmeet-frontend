@@ -34,3 +34,10 @@ hr.rounded {
 label {
   align-items: center;
 }
+
+hr.rounded-comment {
+  margin-top: 2rem;
+  border-top: 5px solid aliceblue;
+  border-radius: 5px;
+  width: 98%;
+}
